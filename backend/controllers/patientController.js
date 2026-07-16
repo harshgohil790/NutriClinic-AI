@@ -80,14 +80,96 @@ async function createPatient(req, res) {
 async function getPatients(req, res) {
 
     try {
+
+        const { search = "" } = req.query;
+
         const patients = await PatientProfile.find()
-            .populate("user", "fullName email");
+
+            .populate({
+
+                path: "user",
+
+                match: {
+
+                    fullName: {
+
+                        $regex: search,
+
+                        $options: "i",
+
+                    },
+
+                },
+
+                select: "fullName email isActive",
+
+            });
+
+        const filteredPatients = patients.filter(
+
+            patient => patient.user
+
+        );
+
         return res.json({
+
             success: true,
-            patients,
+
+            patients: filteredPatients,
+
         });
 
-    } catch (err) {
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        return res.status(500).json({
+
+            success:false,
+
+            message:"Internal Server Error",
+
+        });
+
+    }
+
+}
+
+async function getPatient(req, res) {
+
+    try {
+
+        const patient = await PatientProfile.findById(req.params.id)
+
+            .populate("user", "fullName email");
+
+        if (!patient) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "Patient not found",
+
+            });
+
+        }
+
+        return res.json({
+
+            success: true,
+
+            patient,
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.log(err);
 
         return res.status(500).json({
 
@@ -100,8 +182,8 @@ async function getPatients(req, res) {
     }
 
 }
-
 module.exports = {
     createPatient,
     getPatients,
+    getPatient,
 };

@@ -7,22 +7,28 @@ const {
     createPatient,
 
     getPatients,
-
+    getPatient,
 } = require("../controllers/patientController");
 
 const checkAuth = require("../middlewares/auth");
 
 const requireRole = require("../middlewares/role");
 
+const {
+    createPatientValidation,
+} = require("../validators/patientValidator");
+
 router.post(
 
-    "/",
+"/",
 
-    checkAuth,
+checkAuth,
 
-    requireRole("DIETITIAN"),
+requireRole("DIETITIAN"),
 
-    createPatient
+createPatientValidation,
+
+createPatient
 
 );
 
@@ -35,6 +41,17 @@ router.get(
     requireRole("DIETITIAN"),
 
     getPatients
+
+);
+router.get(
+
+    "/:id",
+
+    checkAuth,
+
+    requireRole("DIETITIAN"),
+
+    getPatient
 
 );
 

@@ -10,6 +10,8 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const patientRoutes = require("./routes/patientRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const mealPlanRoutes = require("./routes/mealPlanRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
 
 const app = express();
 
@@ -35,6 +37,9 @@ app.use(cookieParser());
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/patients", patientRoutes);
+app.use("/api/meal-plans", mealPlanRoutes);
+app.use("/api/appointments", appointmentRoutes);
+
 
 app.get("/", (req, res) => {
 
