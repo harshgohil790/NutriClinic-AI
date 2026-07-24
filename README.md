@@ -116,7 +116,7 @@ npm run dev
 ```bash
 cd server
 npm install
-npm run dev
+npm start
 ```
 
 ---
@@ -128,9 +128,9 @@ Create a `.env` file inside the server directory.
 ```env
 PORT=8000
 
-MONGO_URI=mongodb+srv://Harsh:Welcomee123@cluster0.vsjun58.mongodb.net/?appName=Cluster0
+MONGO_URI=your_mongodb_connection_string
 
-JWT_SECRET=NutriClinic@123
+JWT_SECRET=your_secret_key
 ```
 
 ---
