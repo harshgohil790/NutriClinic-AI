@@ -106,7 +106,7 @@ git clone https://github.com/harshgohil790/NutriClinic-AI.git
 ### Install Frontend
 
 ```bash
-cd client
+cd frontend
 npm install
 npm run dev
 ```
@@ -114,7 +114,7 @@ npm run dev
 ### Install Backend
 
 ```bash
-cd server
+cd backend
 npm install
 npm start
 ```
