@@ -128,9 +128,9 @@ Create a `.env` file inside the server directory.
 ```env
 PORT=8000
 
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb+srv://Harsh:Welcomee123@cluster0.vsjun58.mongodb.net/?appName=Cluster0
 
-JWT_SECRET=your_secret_key
+JWT_SECRET=NutriClinic@123
 ```
 
 ---
@@ -159,12 +159,6 @@ JWT_SECRET=your_secret_key
 ## 👨‍💻 Author
 
 **Harsh Gohil**
-
-LinkedIn: *(Add your profile)*
-
-GitHub: *(Add your GitHub profile)*
-
----
 
 ## ⭐ If you like this project
 
